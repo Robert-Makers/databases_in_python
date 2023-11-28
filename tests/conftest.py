@@ -1,5 +1,5 @@
 import pytest #type: ignore
-from lib.database_connection import DatabaseConnection
+from lib.ml_database_connection import DatabaseConnection
 
 # This is a Pytest fixture.
 # It creates an object that we can use in our tests.
