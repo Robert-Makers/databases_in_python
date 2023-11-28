@@ -1,4 +1,4 @@
-import pytest
+import pytest #type: ignore
 from lib.database_connection import DatabaseConnection
 
 # This is a Pytest fixture.
