@@ -1,11 +1,11 @@
-from lib.ml_database_connection import MusicDatabaseConnection
+from lib.ml_database_connection import DatabaseConnection
 from lib.artist_repository import ArtistRepository
 from lib.album_repository import AlbumRepository
-from lib.bs_database_connection import BookDatabaseConnection
 from lib.book_repository import BookRepository
+from lib.recipe_repository import RecipeRepository
 
 # Connect to the database
-connection = MusicDatabaseConnection()
+connection = DatabaseConnection()
 connection.connect()
 
 # Seed with some seed data
@@ -26,14 +26,25 @@ albums = album_repo.all()
 for album in albums:
     print(album)
 
+album = album_repo.find(1)
+print(album)
+
 # Connnect to book store database
-book_connection = BookDatabaseConnection()
-book_connection.connect()
+connection.seed('seeds/book_store.sql')
 
-book_connection.seed('seeds/book_store.sql')
-
-book_repo = BookRepository(book_connection)
+book_repo = BookRepository(connection)
 books = book_repo.all()
 
 for book in books:
     print(book)
+
+
+# Connect to recipe database
+
+connection.seed('seeds/recipes.sql')
+
+recipes_repo = RecipeRepository(connection)
+recipes = recipes_repo.all()
+
+for recipe in recipes:
+    print(recipe)

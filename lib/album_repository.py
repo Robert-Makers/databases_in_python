@@ -15,5 +15,4 @@ class AlbumRepository():
     def find(self, album_id):
         rows = self._connection.execute('SELECT * FROM albums WHERE id = %s', [album_id])
         album = Album(rows[0]['id'], rows[0]['title'], rows[0]['release_year'], rows[0]['artist_id'])
-        print(album)
         return album
